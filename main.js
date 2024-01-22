@@ -1,5 +1,5 @@
 function uneString() {
-    var dataAtual = new Date(); 
+    var dataAtual = new Date();
     var outputAnos = document.getElementById("outputAnos");
     var outputMeses = document.getElementById("outputMeses");
     var outputDias = document.getElementById("outputDias");
@@ -10,110 +10,125 @@ function uneString() {
 
     var inputYear = document.getElementById("inputYear");
     var inputMonth = document.getElementById("inputMonth");
-    var inputDay = document.getElementById("inputDay"); 
+    var inputDay = document.getElementById("inputDay");
 
     var futuro = false;
 
-    if(anoNascimento > dataAtual.getFullYear() && mesNascimento > dataAtual.getMonth() && diaNascimento > dataAtual.getDate()){
+    if (anoNascimento > dataAtual.getFullYear() && mesNascimento > dataAtual.getMonth() && diaNascimento > dataAtual.getDate()) {
         futuro = true;
     }
-    if(anoNascimento > dataAtual.getFullYear()){
+    if (anoNascimento > dataAtual.getFullYear()) {
         futuro = true;
-    }else if(anoNascimento == dataAtual.getFullYear()){
-        if (mesNascimento > (dataAtual.getMonth() + 1)){
+    } else if (anoNascimento == dataAtual.getFullYear()) {
+        if (mesNascimento > (dataAtual.getMonth() + 1)) {
             futuro = true;
         }
-        if (mesNascimento == (dataAtual.getMonth() + 1)){
-            if(diaNascimento > dataAtual.getDate()){
+        if (mesNascimento == (dataAtual.getMonth() + 1)) {
+            if (diaNascimento > dataAtual.getDate()) {
                 futuro = true;
             }
         }
     }
-    
+
     if (anoNascimento.length < 4 || futuro || mesNascimento < 1 || mesNascimento > 12 || diaNascimento < 1 || diaNascimento > 31) {
         if (anoNascimento.length < 4 || anoNascimento > dataAtual.getFullYear()) {
             inputYear.classList.add('erro');
-        } else {
-            inputYear.classList.remove()
         }
         if (mesNascimento < 1 || mesNascimento > 12) {
             inputMonth.classList.add('erro');
-        } else {
-            inputMonth.classList.remove('erro');
         }
-        if (diaNascimento < 1 || diaNascimento > 31){
+        if (diaNascimento < 1 || diaNascimento > 31) {
             inputDay.classList.add('erro');
-        } else {
-            inputMonth.classList.remove('erro');
         }
-        if(futuro){
-            if (anoNascimento == dataAtual.getFullYear()){
-                if (mesNascimento > (dataAtual.getMonth() + 1)){
+        if (futuro) {
+            if (anoNascimento == dataAtual.getFullYear()) {
+                if (mesNascimento > (dataAtual.getMonth() + 1)) {
                     inputMonth.classList.add("erro");
-                    console.log((dataAtual.getMonth() + 1));
                 }
-                if (mesNascimento == dataAtual.getMonth() + 1){
-                    if(diaNascimento > dataAtual.getDate()){
+                if (mesNascimento == dataAtual.getMonth() + 1) {
+                    if (diaNascimento > dataAtual.getDate()) {
                         inputMonth.classList.add("erro");
                     }
                 }
             }
         }
-        console.log("");
+
     } else {
+        outputAnos.innerText = "--";
+        outputMeses.innerText = "--";
+        outputDias.innerText = "--";
         inputYear.classList.remove('erro');
         inputDay.classList.remove('erro');
         inputMonth.classList.remove('erro');
 
-        if(mesNascimento < 10){
+        if (mesNascimento < 10) {
             var temZero = mesNascimento.indexOf("0")
-            if (temZero == -1){
+            if (temZero == -1) {
                 mesNascimento = "0" + mesNascimento;
-            } 
+            }
         }
 
-        if(diaNascimento < 10){
+        if (diaNascimento < 10) {
             var temZero = diaNascimento.indexOf("0")
-            if (temZero == -1){
+            if (temZero == -1) {
                 diaNascimento = "0" + diaNascimento;
-            } 
+            }
         }
-        if (anoNascimento.length < 4){
-            
+        if (anoNascimento.length < 4) {
+
         }
 
-        var dataNascString = anoNascimento + "-" + mesNascimento + "-" + diaNascimento; 
-        
+        var dataNascString = anoNascimento + "-" + mesNascimento + "-" + diaNascimento;
+
 
         const idade = calcularIdade(dataNascString);
-        console.log(`Idade: ${idade.anos} anos, ${idade.meses} meses e ${idade.dias} dias`);
 
-        console.log(idade.anos, idade.meses, idade.meses);
-        if(!idade.anos && !idade.meses && !idade.dias){
-            if (!idade.anos){
+        if (!idade.anos && !idade.meses && !idade.dias) {
+            if (!idade.anos) {
                 idade.anos = "put year";
             }
-            if (!idade.meses){
+            if (!idade.meses) {
                 idade.meses = "put month";
             }
-            if (!idade.dias){
+            if (!idade.dias) {
                 idade.dias = "put day";
             }
         } else {
-            if (!idade.anos){
+            if (!idade.anos) {
                 idade.anos = "0";
             }
-            if (!idade.meses){
+            if (!idade.meses) {
                 idade.meses = "0";
             }
-            if (!idade.dias){
+            if (!idade.dias) {
                 idade.dias = "0";
             }
         }
-        console.log(idade.anos);
-        outputAnos.innerText = idade.anos;
-        outputMeses.textContent = idade.meses;
-        outputDias.innerText = idade.dias;
+
+        const delay = (delayInms) => {
+            return new Promise(resolve => setTimeout(resolve, delayInms));
+        };
+
+        const sample = async () => {
+            for (let x = 1; x < idade.anos; x++){
+                let delayres = await delay(100);
+                outputAnos.innerText = x;
+            }
+            for (let y = 1; y < idade.meses; y++){
+                let delayres = await delay(200);
+                outputMeses.innerText = y;
+            }
+            for (let z = 1; z < idade.dias; z++){
+                let delayres = await delay(230);
+                outputDias.innerText = z;
+            }
+            
+        };
+        sample();
+        console.log(diaNascimento, dataAtual.getDate(), Number(mesNascimento), dataAtual.getMonth());
+        if(diaNascimento == dataAtual.getDate() && Number(mesNascimento) == (dataAtual.getMonth()+1)){
+            felizAniversario();
+        }
     }
 }
 
@@ -140,4 +155,12 @@ function calcularIdade(dataNascimento) {
 
     return { anos, meses, dias };
 }
+
+function felizAniversario() {
+    var x = document.getElementById("confetti");
+    x.classList.remove("confetti");
+    x.classList.add("confetti-visible");
+}
+
+
 
