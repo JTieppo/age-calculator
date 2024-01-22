@@ -1,0 +1,20 @@
+{
+    "name": "teste-age-calc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start":"open http://127.0.0.1:3000 && npm run dev",
+        "dev": "lite-server"
+    },
+    "lite-server": {
+        "port": 3000,
+        "file": ["*.css","*.html","*.js"],
+        "server":{"baseDir":"./"}
+    },
+    "author": "Emerson Tieppo",
+    "license": "ISC",
+    "devDependencies": {
+        "lite-server": "^2.6.1"
+    }
+}

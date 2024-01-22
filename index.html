@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="card">
+            <div class="entradas">
+                <div class="entrada">
+                    <label id="inputDay">Day</label>
+                    <input type="text" id="diaNascimento">
+                </div>
+                <div class="entrada">
+                    <label id="inputMonth">Month</label>
+                    <input type="text" id="mesNascimento">
+                </div>
+                <div class="entrada">
+                    <label id="inputYear">Full Year</label>
+                    <input type="text" id="anoNascimento">
+                </div>
+            </div>
+            <div class="meio">
+                <div class="divisoria"></div>
+                <button onclick="uneString()""><img src="assets/images/icon-arrow.svg" alt=""></button>
+                <div class="divisoria-mobile"></div>
+            </div>
+            <div class="saida-geral">
+                <div class="saida-expecifica">
+                    <h4 id="outputAnos">--</h4>
+                    <h3>Years</h3>
+                </div>
+                <div class="saida-expecifica">
+                    <h4 id="outputMeses">--</h4>
+                    <h3>Months</h3>
+                </div>
+                <div class="saida-expecifica">
+                    <h4 id="outputDias">--</h4>
+                    <h3>Days</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
