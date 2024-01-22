@@ -1,3 +1,4 @@
 /node_modules
 /assets/design
 .sass-cache
+.DS_Store
